@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis Web + Wireframes — Excel Automotriz (Fuso & Fotón)</title>
+<style>
+:root {
+  --fuso: #C8102E;
+  --foton: #003087;
+  --excel: #1a1a2e;
+  --accent: #F5A623;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-400: #ced4da;
+  --gray-600: #6c757d;
+  --gray-800: #343a40;
+  --white: #ffffff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--gray-800); background: #f0f2f5; }
+
+/* NAV DOC */
+.doc-nav {
+  position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+  background: var(--excel); color: white; overflow-y: auto; z-index: 100;
+  padding: 20px 0;
+}
+.doc-nav h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); padding: 0 20px 12px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 12px; }
+.doc-nav a { display: block; padding: 8px 20px; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 3px solid transparent; }
+.doc-nav a:hover, .doc-nav a.active { color: white; background: rgba(255,255,255,0.08); border-left-color: var(--accent); }
+.doc-nav .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.35); padding: 16px 20px 4px; }
+
+.main { margin-left: 240px; }
+
+/* SECTIONS */
+.section { padding: 60px 48px; border-bottom: 1px solid var(--gray-200); background: white; }
+.section:nth-child(even) { background: var(--gray-100); }
+.section-title { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+.section-sub { color: var(--gray-600); font-size: 15px; margin-bottom: 36px; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-right: 6px; }
+.badge-fuso { background: #fde8ec; color: var(--fuso); }
+.badge-foton { background: #e0e8f5; color: var(--foton); }
+.badge-new { background: #e6f9f0; color: #0a7a45; }
+.badge-crm { background: #fff3e0; color: #e65100; }
+
+/* WIREFRAME WRAPPER */
+.wf-wrap { border: 2px solid var(--gray-400); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: white; }
+.wf-label { background: var(--gray-800); color: white; padding: 8px 16px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+.wf-label span { width: 10px; height: 10px; border-radius: 50%; }
+.dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+.wf-content { padding: 0; }
+
+/* WIREFRAME COMPONENTS */
+.wf-nav { background: #1a1a2e; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 56px; }
+.wf-nav .logo-zone { display: flex; gap: 16px; align-items: center; }
+.wf-logo-fuso { background: var(--fuso); color: white; font-weight: 700; font-size: 13px; padding: 4px 12px; border-radius: 4px; }
+.wf-logo-foton { background: var(--foton); color: white; font-weight: 700; font-size: 13px; padding: 4px 12px; border-radius: 4px; }
+.wf-nav-links { display: flex; gap: 20px; }
+.wf-nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; }
+.wf-nav-cta { display: flex; gap: 8px; }
+.btn { display: inline-block; padding: 8px 18px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; }
+.btn-primary { background: var(--accent); color: #1a1a1a; }
+.btn-outline { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.5); }
+.btn-fuso { background: var(--fuso); color: white; }
+.btn-foton { background: var(--foton); color: white; }
+.btn-gray { background: var(--gray-200); color: var(--gray-800); }
+.btn-sm { padding: 5px 12px; font-size: 12px; }
+.btn-lg { padding: 12px 28px; font-size: 15px; }
+
+/* HERO */
+.wf-hero { height: 420px; background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 60%, #2a1a3e 100%); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+.wf-hero-bg { position: absolute; inset: 0; opacity: 0.08; background: repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%); background-size: 20px 20px; }
+.wf-hero-content { text-align: center; color: white; z-index: 1; }
+.wf-hero-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 12px; }
+.wf-hero-h1 { font-size: 36px; font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+.wf-hero-sub { font-size: 15px; color: rgba(255,255,255,0.65); margin-bottom: 28px; }
+.wf-hero-tabs { display: flex; gap: 0; background: rgba(255,255,255,0.1); border-radius: 8px; padding: 4px; margin-bottom: 24px; }
+.wf-hero-tab { padding: 8px 24px; border-radius: 6px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.6); cursor: pointer; }
+.wf-hero-tab.active-fuso { background: var(--fuso); color: white; }
+.wf-hero-tab.active-foton { background: var(--foton); color: white; }
+.wf-hero-btns { display: flex; gap: 12px; justify-content: center; }
+.truck-silhouette { position: absolute; right: -20px; bottom: 0; opacity: 0.15; font-size: 160px; line-height: 1; }
+
+/* SEARCH BAR */
+.wf-search { background: white; margin: -24px 40px 0; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.15); padding: 20px 24px; display: flex; gap: 12px; align-items: flex-end; position: relative; z-index: 2; }
+.wf-search-field { flex: 1; }
+.wf-search-field label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-600); margin-bottom: 6px; }
+.wf-search-field select, .wf-search-field input { width: 100%; padding: 10px 12px; border: 1.5px solid var(--gray-400); border-radius: 6px; font-size: 13px; background: var(--gray-100); }
+.segment-tag { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; }
+.seg-retail { background: #e8f4fd; color: #0066cc; border: 1.5px solid #b3d9f7; }
+.seg-fleet { background: #fef5e4; color: #b45309; border: 1.5px solid #fcd68a; }
+
+/* GRID */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+/* CARDS */
+.card { background: white; border-radius: var(--radius); border: 1.5px solid var(--gray-200); overflow: hidden; }
+.card-img { height: 160px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 64px; border-bottom: 1px solid var(--gray-200); }
+.card-body { padding: 16px; }
+.card-brand { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
+.card-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.card-spec { font-size: 12px; color: var(--gray-600); margin-bottom: 12px; }
+.card-price { font-size: 14px; font-weight: 700; color: var(--gray-800); margin-bottom: 12px; }
+.card-actions { display: flex; gap: 8px; }
+
+/* STAT STRIP */
+.stat-strip { background: var(--excel); color: white; display: flex; justify-content: space-around; padding: 28px 40px; }
+.stat-item { text-align: center; }
+.stat-num { font-size: 28px; font-weight: 800; color: var(--accent); }
+.stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+/* FLOW DIAGRAM */
+.flow-wrap { display: flex; align-items: stretch; gap: 0; }
+.flow-step { flex: 1; background: white; border: 1.5px solid var(--gray-300, #dee2e6); padding: 20px 16px; text-align: center; position: relative; }
+.flow-step:not(:last-child)::after { content: '→'; position: absolute; right: -14px; top: 50%; transform: translateY(-50%); font-size: 20px; color: var(--gray-600); z-index: 1; background: white; padding: 2px 4px; }
+.flow-num { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #1a1a1a; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+.flow-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.flow-desc { font-size: 11px; color: var(--gray-600); }
+
+/* COMPARISON */
+.compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.compare-table th { padding: 12px 16px; background: var(--gray-100); text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--gray-200); }
+.compare-table tr:hover td { background: var(--gray-100); }
+.check { color: #16a34a; font-weight: 700; }
+.cross { color: #dc2626; }
+.partial { color: #d97706; }
+
+/* CRM DIAGRAM */
+.crm-flow { display: flex; flex-direction: column; gap: 0; }
+.crm-layer { display: flex; align-items: stretch; }
+.crm-box { flex: 1; padding: 16px 20px; border: 1.5px solid; border-radius: 0; text-align: center; }
+.crm-box h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.crm-box p { font-size: 11px; opacity: 0.8; }
+.layer-web { background: #e0f2fe; border-color: #0284c7; color: #0c4a6e; }
+.layer-middleware { background: #fef9c3; border-color: #ca8a04; color: #713f12; }
+.layer-crm { background: #dcfce7; border-color: #16a34a; color: #14532d; }
+.layer-auto { background: #f3e8ff; border-color: #9333ea; color: #581c87; }
+.crm-arrow { text-align: center; font-size: 20px; color: var(--gray-600); padding: 4px 0; }
+
+/* ANNOTATION */
+.annotation { background: #fffbeb; border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; }
+.annotation strong { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #92400e; }
+.annotation p { font-size: 13px; color: #78350f; margin-top: 4px; }
+
+/* TAGS */
+.tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.tag { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.tag-blue { background: #dbeafe; color: #1e40af; }
+.tag-green { background: #d1fae5; color: #065f46; }
+.tag-red { background: #fee2e2; color: #991b1b; }
+.tag-orange { background: #ffedd5; color: #9a3412; }
+.tag-purple { background: #ede9fe; color: #5b21b6; }
+
+/* RESPONSIVE PLACEHOLDER */
+.device-frame { border: 3px solid var(--gray-800); border-radius: 12px; overflow: hidden; }
+.phone-frame { width: 320px; margin: 0 auto; }
+
+/* SPACERS */
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mt-32 { margin-top: 32px; }
+.mb-8 { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.gap-12 { gap: 12px; }
+hr.wf { border: none; border-top: 2px dashed var(--gray-400); margin: 24px 0; }
+
+/* SIDEBAR LAYOUT */
+.layout-sidebar { display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; }
+.sidebar-card { background: white; border: 1.5px solid var(--gray-200); border-radius: var(--radius); padding: 20px; }
+.sidebar-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--gray-200); }
+
+/* FORM WIREFRAME */
+.wf-form-field { margin-bottom: 14px; }
+.wf-form-field label { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gray-600); margin-bottom: 6px; }
+.wf-input { width: 100%; padding: 10px 12px; border: 1.5px solid var(--gray-400); border-radius: 6px; font-size: 13px; background: var(--gray-100); }
+.wf-step-indicator { display: flex; gap: 0; margin-bottom: 24px; }
+.wf-step { flex: 1; padding: 10px; text-align: center; font-size: 12px; font-weight: 600; border-bottom: 3px solid var(--gray-300, #dee2e6); color: var(--gray-600); }
+.wf-step.done { border-color: #16a34a; color: #16a34a; }
+.wf-step.active { border-color: var(--accent); color: var(--gray-800); }
+
+/* PILL TOGGLE */
+.pill-toggle { display: inline-flex; background: var(--gray-200); border-radius: 30px; padding: 3px; gap: 0; }
+.pill-opt { padding: 6px 16px; border-radius: 24px; font-size: 12px; font-weight: 600; cursor: pointer; }
+.pill-opt.active { background: white; color: var(--gray-800); box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR NAV -->
+<nav class="doc-nav">
+  <h2>Excel Automotriz</h2>
+  <span class="section-label">Diagnóstico</span>
+  <a href="#benchmark">Benchmark Mercado</a>
+  <a href="#gaps">Gaps Identificados</a>
+  <span class="section-label">Wireframes</span>
+  <a href="#homepage">Homepage Unificado</a>
+  <a href="#categoria-fuso">Categoría Fuso</a>
+  <a href="#modelo-fuso">Modelo Fuso FE85</a>
+  <a href="#categoria-foton">Categoría Fotón</a>
+  <a href="#modelo-foton">Modelo Fotón Aumark</a>
+  <span class="section-label">Flujos UX</span>
+  <a href="#flujo-retail">Flujo Retail</a>
+  <a href="#flujo-flotas">Flujo Flotas</a>
+  <a href="#cotizador">Cotizador</a>
+  <a href="#agendamiento">Agendamiento</a>
+</nav>
+
+<main class="main">
+
+<!-- ============================================================
+     SECTION 1: BENCHMARK
+     ============================================================ -->
+<section class="section" id="benchmark">
+  <div class="badge badge-new">Diagnóstico</div>
+  <h2 class="section-title" style="margin-top:8px">Benchmark de Mercado — Panamá & Colombia</h2>
+  <p class="section-sub">Evaluación comparativa de los mejores sitios web en el segmento de camiones y vehículos comerciales.</p>
+
+  <table class="compare-table" style="margin-bottom:24px">
+    <thead>
+      <tr>
+        <th>Sitio / Marca</th>
+        <th>País</th>
+        <th>Catálogo</th>
+        <th>Cotizador online</th>
+        <th>Agendamiento</th>
+        <th>Flotas / RFP</th>
+        <th>Calculadora fin.</th>
+        <th>CRM visible</th>
+        <th>Mobile</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>excelfuso.com/panama</strong></td>
+        <td>🇵🇦 PA</td>
+        <td class="check">✓ 14 mod.</td>
+        <td class="partial">△ Externo</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="partial">△</td>
+        <td><strong>4/10</strong></td>
+      </tr>
+      <tr>
+        <td><strong>fotonexcel.com.pa</strong></td>
+        <td>🇵🇦 PA</td>
+        <td class="partial">△ 8 mod.</td>
+        <td class="partial">△ Externo</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="check">✓</td>
+        <td><strong>3/10</strong></td>
+      </tr>
+      <tr style="background:#f0fdf4">
+        <td><strong>hino.com.pa ★</strong></td>
+        <td>🇵🇦 PA</td>
+        <td class="check">✓ 20+ mod.</td>
+        <td class="check">✓ Nativo</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="partial">△</td>
+        <td class="check">✓</td>
+        <td><strong>6/10</strong></td>
+      </tr>
+      <tr>
+        <td><strong>casainglesa.co</strong></td>
+        <td>🇨🇴 CO</td>
+        <td class="check">✓ Multi</td>
+        <td class="partial">△ Form</td>
+        <td class="check">✓ WA</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="cross">✗</td>
+        <td class="check">✓</td>
+        <td><strong>5/10</strong></td>
+      </tr>
+      <tr style="background:#f0fdf4">
+        <td><strong>Volvo Trucks CO ★★</strong></td>
+        <td>🇨🇴 CO</td>
+        <td class="check">✓ Completo</td>
+        <td class="check">✓ Nativo</td>
+        <td class="check">✓ Integrado</td>
+        <td class="check">✓ Fleet Portal</td>
+        <td class="check">✓</td>
+        <td class="check">✓ HubSpot</td>
+        <td class="check">✓</td>
+        <td><strong>9/10</strong></td>
+      </tr>
+      <tr style="background:#f0fdf4">
+        <td><strong>Mercedes-Benz CO ★★</strong></td>
+        <td>🇨🇴 CO</td>
+        <td class="check">✓ Completo</td>
+        <td class="check">✓ Configurador</td>
+        <td class="check">✓ Calendario</td>
+        <td class="check">✓ B2B Form</td>
+        <td class="check">✓</td>
+        <td class="check">✓ SF</td>
+        <td class="check">✓</td>
+        <td><strong>9/10</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Toyota PA</strong></td>
+        <td>🇵🇦 PA</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="partial">△</td>
+        <td class="cross">✗</td>
+        <td class="partial">△</td>
+        <td class="partial">△</td>
+        <td class="check">✓</td>
+        <td><strong>7/10</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="annotation">
+    <strong>Conclusión clave</strong>
+    <p>Excel Automotriz opera por debajo del promedio del mercado. La mayor brecha está en: <strong>flujo digital de cotización nativo, segmentación retail/flotas, agendamiento online e integración CRM visible</strong>. Hino.com.pa es el referente local inmediato a superar. Volvo y Mercedes-Benz CO son el estándar aspiracional.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 2: GAPS
+     ============================================================ -->
+<section class="section" id="gaps">
+  <div class="badge badge-fuso">Fuso</div>
+  <div class="badge badge-foton">Fotón</div>
+  <h2 class="section-title" style="margin-top:8px">Gaps Críticos Identificados</h2>
+  <p class="section-sub">Oportunidades de mejora ordenadas por impacto en conversión.</p>
+
+  <div class="grid-3">
+    <div class="card" style="border-left: 4px solid #dc2626">
+      <div class="card-body">
+        <div style="font-size:28px;margin-bottom:8px">🔴</div>
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:8px">Sin segmentación Retail / Flotas</h4>
+        <p style="font-size:13px;color:var(--gray-600)">Ambos sitios tratan a todos los usuarios igual. Un comprador de flota de 20 camiones necesita un RFP, no un formulario de cotización individual.</p>
+        <div class="tag-wrap"><span class="tag tag-red">Alto impacto</span><span class="tag tag-orange">Conversion</span></div>
+      </div>
+    </div>
+    <div class="card" style="border-left: 4px solid #dc2626">
+      <div class="card-body">
+        <div style="font-size:28px;margin-bottom:8px">🔴</div>
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:8px">Cotizador externo / roto</h4>
+        <p style="font-size:13px;color:var(--gray-600)">Fuso redirige a herokuapp.com. Fotón a digitalsales.excelautos.co. Experiencia fragmentada, sin tracking, alta tasa de abandono.</p>
+        <div class="tag-wrap"><span class="tag tag-red">Alto impacto</span><span class="tag tag-orange">UX</span></div>
+      </div>
+    </div>
+    <div class="card" style="border-left: 4px solid #dc2626">
+      <div class="card-body">
+        <div style="font-size:28px;margin-bottom:8px">🔴</div>
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:8px">Sin agendamiento digital</h4>
+        <p style="font-size:13px;color:var(--gray-600)">No existe un sistema de citas online. El cliente debe llamar o ir físicamente. Fricción innecesaria en el funnel.</p>
+        <div class="tag-wrap"><span class="tag tag-red">Alto impacto</span><span class="tag tag-red">Funnel</span></div>
+      </div>
+    </div>
+    <div class="card" style="border-left: 4px solid #d97706">
+      <div class="card-body">
+        <div style="font-size:28px;margin-bottom:8px">🟡</div>
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:8px">Identidad de marca dispersa</h4>
+        <p style="font-size:13px;color:var(--gray-600)">Fuso y Fotón son marcas distintas bajo Excel Automotriz pero no hay señales de esta paraguas. Oportunidad de cross-sell y trust building.</p>
+        <div class="tag-wrap"><span class="tag tag-orange">Medio</span><span class="tag tag-blue">Marca</span></div>
+      </div>
+    </div>
+    <div class="card" style="border-left: 4px solid #d97706">
+      <div class="card-body">
+        <div style="font-size:28px;margin-bottom:8px">🟡</div>
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:8px">Sin calculadora de financiamiento</h4>
+        <p style="font-size:13px;color:var(--gray-600)">El precio de un camión es una barrera. Una calculadora de cuotas mensuales reduce la fricción de decisión especialmente en retail.</p>
+        <div class="tag-wrap"><span class="tag tag-orange">Medio</span><span class="tag tag-green">Conversión</span></div>
+      </div>
+    </div>
+    <div class="card" style="border-left: 4px solid #d97706">
+      <div class="card-body">
+        <div style="font-size:28px;margin-bottom:8px">🟡</div>
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:8px">Sin tracking ni CRM integrado</h4>
+        <p style="font-size:13px;color:var(--gray-600)">Los leads que entran por web no se asignan, califican ni nutren automáticamente. GTM presente pero sin pipeline visible.</p>
+        <div class="tag-wrap"><span class="tag tag-orange">Medio</span><span class="tag tag-purple">CRM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 3: HOMEPAGE WIREFRAME
+     ============================================================ -->
+<section class="section" id="homepage">
+  <div class="badge badge-new">Wireframe</div>
+  <h2 class="section-title" style="margin-top:8px">Homepage — Excel Automotriz (Unificado)</h2>
+  <p class="section-sub">Portal dual-marca que segmenta al usuario desde el primer clic. Válido para Fuso y Fotón bajo el paraguas Excel.</p>
+
+  <div class="wf-wrap">
+    <div class="wf-label">
+      <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+      &nbsp; excelfuso.com / fotonexcel.com.pa &nbsp;|&nbsp; Desktop 1440px
+    </div>
+    <div class="wf-content">
+
+      <!-- NAV -->
+      <div class="wf-nav">
+        <div class="logo-zone">
+          <div style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:2px;text-transform:uppercase">Excel</div>
+          <div class="wf-logo-fuso">FUSO</div>
+          <div style="color:rgba(255,255,255,0.25);font-size:18px">|</div>
+          <div class="wf-logo-foton">FOTÓN</div>
+        </div>
+        <div class="wf-nav-links">
+          <a href="#">Modelos</a>
+          <a href="#">Por Uso</a>
+          <a href="#">Flotas</a>
+          <a href="#">Posventa</a>
+          <a href="#">Financiamiento</a>
+          <a href="#">Sucursales</a>
+        </div>
+        <div class="wf-nav-cta">
+          <span class="btn btn-outline btn-sm">🇵🇦 PA</span>
+          <span class="btn btn-primary btn-sm">Cotizar ahora</span>
+        </div>
+      </div>
+
+      <!-- HERO -->
+      <div class="wf-hero">
+        <div class="wf-hero-bg"></div>
+        <div class="wf-hero-content">
+          <div class="wf-hero-eyebrow">Distribuidores Oficiales en Panamá</div>
+          <div class="wf-hero-h1">Mueve tu negocio<br>con la flota correcta</div>
+          <div class="wf-hero-sub">Camiones Fuso · Fotón · Financiamiento · Soporte 24/7</div>
+          <div class="wf-hero-tabs">
+            <div class="wf-hero-tab active-fuso">🚛 Fuso</div>
+            <div class="wf-hero-tab" style="color:rgba(255,255,255,0.6)">🚚 Fotón</div>
+          </div>
+          <div class="wf-hero-btns">
+            <span class="btn btn-primary btn-lg">Explorar modelos</span>
+            <span class="btn btn-outline btn-lg">Solicitar propuesta de flota</span>
+          </div>
+        </div>
+        <div class="truck-silhouette">🚛</div>
+      </div>
+
+      <!-- SEARCH BAR -->
+      <div style="padding: 0 40px; position:relative; margin-top:-28px; z-index:2; margin-bottom:40px">
+        <div class="wf-search">
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;position:absolute;top:-36px;left:64px">
+            <span class="segment-tag seg-retail" style="font-size:11px;padding:4px 10px">👤 Comprador Individual</span>
+            <span class="segment-tag seg-fleet" style="font-size:11px;padding:4px 10px">🏢 Gestor de Flota</span>
+          </div>
+          <div class="wf-search-field">
+            <label>¿Para qué lo usarás?</label>
+            <select><option>Carga general</option><option>Construcción</option><option>Distribución</option><option>Pasajeros</option><option>Refrigerado</option></select>
+          </div>
+          <div class="wf-search-field">
+            <label>Capacidad de carga</label>
+            <select><option>Hasta 3T</option><option>3T - 8T</option><option>8T - 15T</option><option>+15T</option></select>
+          </div>
+          <div class="wf-search-field">
+            <label>Marca</label>
+            <select><option>Ambas</option><option>Fuso</option><option>Fotón</option></select>
+          </div>
+          <div class="wf-search-field" style="flex:0.5">
+            <label>Unidades</label>
+            <input type="number" placeholder="1" value="1">
+          </div>
+          <span class="btn btn-fuso btn-lg" style="white-space:nowrap">Buscar camiones →</span>
+        </div>
+      </div>
+
+      <!-- STATS STRIP -->
+      <div class="stat-strip">
+        <div class="stat-item"><div class="stat-num">+30</div><div class="stat-label">Modelos disponibles</div></div>
+        <div class="stat-item"><div class="stat-num">+15 años</div><div class="stat-label">En el mercado panameño</div></div>
+        <div class="stat-item"><div class="stat-num">+500</div><div class="stat-label">Empresas con flota activa</div></div>
+        <div class="stat-item"><div class="stat-num">3 sedes</div><div class="stat-label">En Ciudad de Panamá</div></div>
+        <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Soporte técnico</div></div>
+      </div>
+
+      <!-- FEATURED MODELS -->
+      <div style="padding:40px 40px 32px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+          <div>
+            <div class="badge badge-fuso">FUSO</div>
+            <span style="font-size:20px;font-weight:700;margin-left:8px">Modelos destacados</span>
+          </div>
+          <a href="#" style="font-size:13px;color:var(--fuso);font-weight:600">Ver todos los modelos →</a>
+        </div>
+        <div class="grid-4">
+          <div class="card">
+            <div class="card-img">🚚</div>
+            <div class="card-body">
+              <div class="card-brand" style="color:var(--fuso)">FUSO</div>
+              <div class="card-title">FE85</div>
+              <div class="card-spec">16 pies · 5T GVW · Euro IV</div>
+              <div class="card-price">Desde $42,500</div>
+              <div class="card-actions">
+                <span class="btn btn-fuso btn-sm">Cotizar</span>
+                <span class="btn btn-gray btn-sm">Ver más</span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img">🚛</div>
+            <div class="card-body">
+              <div class="card-brand" style="color:var(--fuso)">FUSO</div>
+              <div class="card-title">FM 24 pies</div>
+              <div class="card-spec">24 pies · 14T GVW · Turbo</div>
+              <div class="card-price">Desde $78,000</div>
+              <div class="card-actions">
+                <span class="btn btn-fuso btn-sm">Cotizar</span>
+                <span class="btn btn-gray btn-sm">Ver más</span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img">🚌</div>
+            <div class="card-body">
+              <div class="card-brand" style="color:var(--fuso)">FUSO</div>
+              <div class="card-title">Rosa 34</div>
+              <div class="card-spec">Bus escolar · 34 pax</div>
+              <div class="card-price">Desde $65,000</div>
+              <div class="card-actions">
+                <span class="btn btn-fuso btn-sm">Cotizar</span>
+                <span class="btn btn-gray btn-sm">Ver más</span>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border:2px dashed var(--gray-400);background:var(--gray-100);display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center;padding:20px;color:var(--gray-600)">
+              <div style="font-size:32px;margin-bottom:8px">+11</div>
+              <div style="font-size:13px;font-weight:600">modelos más</div>
+              <a href="#" class="btn btn-gray btn-sm" style="margin-top:12px;display:inline-block">Ver catálogo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOTON SECTION -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin:40px 0 24px">
+          <div>
+            <div class="badge badge-foton">FOTÓN</div>
+            <span style="font-size:20px;font-weight:700;margin-left:8px">Modelos destacados</span>
+          </div>
+          <a href="#" style="font-size:13px;color:var(--foton);font-weight:600">Ver todos los modelos →</a>
+        </div>
+        <div class="grid-4">
+          <div class="card">
+            <div class="card-img">🚐</div>
+            <div class="card-body">
+              <div class="card-brand" style="color:var(--foton)">FOTÓN</div>
+              <div class="card-title">Aumark E 3T</div>
+              <div class="card-spec">Carga mediana · Motor Cummins</div>
+              <div class="card-price">Desde $28,900</div>
+              <div class="card-actions">
+                <span class="btn btn-foton btn-sm">Cotizar</span>
+                <span class="btn btn-gray btn-sm">Ver más</span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img">🛻</div>
+            <div class="card-body">
+              <div class="card-brand" style="color:var(--foton)">FOTÓN</div>
+              <div class="card-title">Tunland G7</div>
+              <div class="card-spec">Pickup 4x4 · Luxury/Standard</div>
+              <div class="card-price">Desde $34,500</div>
+              <div class="card-actions">
+                <span class="btn btn-foton btn-sm">Cotizar</span>
+                <span class="btn btn-gray btn-sm">Ver más</span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img">🚌</div>
+            <div class="card-body">
+              <div class="card-brand" style="color:var(--foton)">FOTÓN</div>
+              <div class="card-title">VIEW Microbus</div>
+              <div class="card-spec">Van · 15 pasajeros</div>
+              <div class="card-price">Desde $22,000</div>
+              <div class="card-actions">
+                <span class="btn btn-foton btn-sm">Cotizar</span>
+                <span class="btn btn-gray btn-sm">Ver más</span>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border:2px dashed var(--gray-400);background:var(--gray-100);display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center;padding:20px;color:var(--gray-600)">
+              <div style="font-size:32px;margin-bottom:8px">+5</div>
+              <div style="font-size:13px;font-weight:600">modelos más</div>
+              <a href="#" class="btn btn-gray btn-sm" style="margin-top:12px;display:inline-block">Ver catálogo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FLEET CTA BAND -->
+      <div style="background:linear-gradient(135deg, #0d1b3e, #1e3a8a);padding:48px 40px;display:flex;align-items:center;justify-content:space-between">
+        <div style="color:white">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:8px">Para empresas</div>
+          <div style="font-size:26px;font-weight:800;margin-bottom:8px">¿Necesitas 3 o más unidades?</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.7);max-width:480px">Nuestro equipo de flotas te prepara una propuesta personalizada con precios especiales, financiamiento corporativo y soporte dedicado.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;flex-shrink:0;margin-left:40px">
+          <span class="btn btn-primary btn-lg">Solicitar propuesta de flota</span>
+          <span class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.4)">Hablar con un asesor</span>
+        </div>
+      </div>
+
+      <!-- FOOTER HINT -->
+      <div style="padding:24px 40px;background:var(--gray-100);display:flex;gap:40px;font-size:12px;color:var(--gray-600)">
+        <span>📍 Vía Ricardo J. Alfaro, Ciudad de Panamá</span>
+        <span>📞 360-3800</span>
+        <span>🕐 Lun–Vie 8AM–6:30PM · Sáb 8AM–5PM</span>
+        <span>💬 WhatsApp disponible</span>
+      </div>
+
+    </div><!-- /wf-content -->
+  </div><!-- /wf-wrap -->
+
+  <div class="annotation" style="margin-top:24px">
+    <strong>Notas de diseño</strong>
+    <p><strong>Dual-brand switch</strong> en nav y hero permite mantener URLs separadas pero con arquitectura compartida. El <strong>search bar con campo "Unidades"</strong> detecta automáticamente si es cliente retail (&lt;3) o flotista (≥3) y adapta el CTA. El <strong>Fleet CTA band</strong> siempre visible dirige al flujo RFP.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4: CATEGORIA FUSO
+     ============================================================ -->
+<section class="section" id="categoria-fuso">
+  <div class="badge badge-fuso">Fuso</div>
+  <h2 class="section-title" style="margin-top:8px">Página de Categoría — "Carga Mediana Fuso"</h2>
+  <p class="section-sub">Listado filtrable con comparador y sidebar de contacto para asesoría.</p>
+
+  <div class="wf-wrap">
+    <div class="wf-label">
+      <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+      &nbsp; /fuso/carga-mediana &nbsp;|&nbsp; Desktop 1440px
+    </div>
+    <div class="wf-content">
+      <div class="wf-nav">
+        <div class="logo-zone">
+          <div class="wf-logo-fuso">FUSO</div>
+          <span style="color:rgba(255,255,255,0.3);margin:0 12px">/ Carga Mediana</span>
+        </div>
+        <div class="wf-nav-cta">
+          <span class="btn btn-primary btn-sm">Cotizar</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:240px 1fr;min-height:600px">
+        <!-- SIDEBAR FILTERS -->
+        <div style="background:#f8f9fa;padding:24px;border-right:1px solid var(--gray-200)">
+          <h3 style="font-size:14px;font-weight:700;margin-bottom:16px">Filtrar</h3>
+
+          <div style="margin-bottom:20px">
+            <label style="font-size:11px;font-weight:600;color:var(--gray-600);text-transform:uppercase;display:block;margin-bottom:8px">Capacidad (GVW)</label>
+            <div style="font-size:13px;display:flex;flex-direction:column;gap:6px">
+              <label style="display:flex;gap:6px;margin:0"><input type="checkbox" checked> 8T - 12T</label>
+              <label style="display:flex;gap:6px;margin:0"><input type="checkbox"> 12T - 15T</label>
+              <label style="display:flex;gap:6px;margin:0"><input type="checkbox"> 15T+</label>
+            </div>
+          </div>
+
+          <div style="margin-bottom:20px">
+            <label style="font-size:11px;font-weight:600;color:var(--gray-600);text-transform:uppercase;display:block;margin-bottom:8px">Largo chasis</label>
+            <select style="width:100%;padding:8px;border:1px solid var(--gray-300);border-radius:4px;font-size:12px">
+              <option>Cualquiera</option><option>16 pies</option><option>20 pies</option><option>24 pies</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom:20px">
+            <label style="font-size:11px;font-weight:600;color:var(--gray-600);text-transform:uppercase;display:block;margin-bottom:8px">Tipo cabina</label>
+            <div style="font-size:13px;display:flex;flex-direction:column;gap:6px">
+              <label style="display:flex;gap:6px;margin:0"><input type="checkbox" checked> 2 pasajeros</label>
+              <label style="display:flex;gap:6px;margin:0"><input type="checkbox"> 3 pasajeros</label>
+              <label style="display:flex;gap:6px;margin:0"><input type="checkbox"> Crew cab</label>
+            </div>
+          </div>
+
+          <div style="margin-bottom:20px">
+            <label style="font-size:11px;font-weight:600;color:var(--gray-600);text-transform:uppercase;display:block;margin-bottom:8px">Rango precio</label>
+            <input type="range" style="width:100%" min="20000" max="120000" value="120000">
+            <div style="font-size:12px;color:var(--gray-600);margin-top:4px">$20k - $120k</div>
+          </div>
+
+          <button class="btn btn-fuso" style="width:100%;margin-top:12px">Aplicar filtros</button>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div style="padding:32px 40px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+            <div style="font-size:13px;color:var(--gray-600)"><strong>4 modelos</strong> en Carga Mediana</div>
+            <div style="display:flex;gap:8px;align-items:center;font-size:12px">
+              Ordenar por:
+              <select style="padding:6px;border:1px solid var(--gray-300);border-radius:4px;font-size:12px">
+                <option>Relevancia</option><option>Precio menor</option><option>Precio mayor</option><option>Capacidad</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- PRODUCT GRID -->
+          <div class="grid-2" style="gap:20px">
+            <div class="card">
+              <div class="card-img" style="height:200px;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);font-size:80px">🚛</div>
+              <div class="card-body">
+                <div class="card-brand" style="color:var(--fuso)">FUSO</div>
+                <div class="card-title">FE85 Chassis</div>
+                <div style="font-size:12px;color:var(--gray-600);margin-bottom:8px">
+                  <div>GVW: 8.5T | Largo: 16 pies | Euro IV</div>
+                  <div>Motor: Diesel 4.3L | 140 HP | 360 Nm</div>
+                </div>
+                <div class="card-price">Desde $42,500</div>
+                <div class="tag-wrap" style="margin-bottom:12px"><span class="tag tag-green">Stock disponible</span></div>
+                <div class="card-actions" style="flex-direction:column;gap:6px">
+                  <span class="btn btn-fuso" style="width:100%;text-align:center">Cotizar este modelo</span>
+                  <span class="btn btn-gray" style="width:100%;text-align:center">Ver especificaciones</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-img" style="height:200px;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);font-size:80px">🚛</div>
+              <div class="card-body">
+                <div class="card-brand" style="color:var(--fuso)">FUSO</div>
+                <div class="card-title">FM 20 pies</div>
+                <div style="font-size:12px;color:var(--gray-600);margin-bottom:8px">
+                  <div>GVW: 11T | Largo: 20 pies | Euro IV</div>
+                  <div>Motor: Diesel 6.0L | 210 HP | 520 Nm</div>
+                </div>
+                <div class="card-price">Desde $58,900</div>
+                <div class="tag-wrap" style="margin-bottom:12px"><span class="tag tag-blue">Configuración personalizada</span></div>
+                <div class="card-actions" style="flex-direction:column;gap:6px">
+                  <span class="btn btn-fuso" style="width:100%;text-align:center">Cotizar este modelo</span>
+                  <span class="btn btn-gray" style="width:100%;text-align:center">Ver especificaciones</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-img" style="height:200px;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);font-size:80px">🚛</div>
+              <div class="card-body">
+                <div class="card-brand" style="color:var(--fuso)">FUSO</div>
+                <div class="card-title">FM 24 pies</div>
+                <div style="font-size:12px;color:var(--gray-600);margin-bottom:8px">
+                  <div>GVW: 14T | Largo: 24 pies | Euro IV</div>
+                  <div>Motor: Diesel 6.5L | 240 HP | 580 Nm</div>
+                </div>
+                <div class="card-price">Desde $78,000</div>
+                <div class="tag-wrap" style="margin-bottom:12px"><span class="tag tag-green">Stock disponible</span></div>
+                <div class="card-actions" style="flex-direction:column;gap:6px">
+                  <span class="btn btn-fuso" style="width:100%;text-align:center">Cotizar este modelo</span>
+                  <span class="btn btn-gray" style="width:100%;text-align:center">Ver especificaciones</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-img" style="height:200px;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);font-size:80px">🚛</div>
+              <div class="card-body">
+                <div class="card-brand" style="color:var(--fuso)">FUSO</div>
+                <div class="card-title">FM 6x4 (Heavy)</div>
+                <div style="font-size:12px;color:var(--gray-600);margin-bottom:8px">
+                  <div>GVW: 16T | 6x4 Tracción | Euro IV</div>
+                  <div>Motor: Diesel 7.0L | 260 HP | 680 Nm</div>
+                </div>
+                <div class="card-price">Desde $95,000</div>
+                <div class="tag-wrap" style="margin-bottom:12px"><span class="tag tag-orange">Bajo pedido</span></div>
+                <div class="card-actions" style="flex-direction:column;gap:6px">
+                  <span class="btn btn-fuso" style="width:100%;text-align:center">Solicitar cotización</span>
+                  <span class="btn btn-gray" style="width:100%;text-align:center">Ver especificaciones</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPARISON CTA -->
+      <div style="padding:24px 40px;background:var(--gray-100);border-top:1px solid var(--gray-200)">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:13px"><strong>¿Necesitas comparar modelos?</strong> Selecciona hasta 3 opciones para ver especificaciones lado a lado.</div>
+          <span class="btn btn-fuso">Abrir comparador</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 5: MODELO FUSO
+     ============================================================ -->
+<section class="section" id="modelo-fuso">
+  <div class="badge badge-fuso">Fuso</div>
+  <h2 class="section-title" style="margin-top:8px">Página de Modelo — "Fuso FM 24 pies"</h2>
+  <p class="section-sub">Detalle completo con configurador, calculadora de financiamiento y CTA de cotización.</p>
+
+  <div class="wf-wrap">
+    <div class="wf-label">
+      <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+      &nbsp; /fuso/fm-24-pies &nbsp;|&nbsp; Desktop 1440px
+    </div>
+    <div class="wf-content">
+      <div class="wf-nav">
+        <div class="logo-zone">
+          <div class="wf-logo-fuso">FUSO</div>
+          <span style="color:rgba(255,255,255,0.3);margin:0 12px">/ FM 24 pies</span>
+        </div>
+        <div class="wf-nav-cta">
+          <span class="btn btn-primary btn-sm">Cotizar este modelo</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:24px;padding:40px">
+        <!-- MAIN -->
+        <div>
+          <!-- HERO IMAGE -->
+          <div style="height:400px;background:linear-gradient(135deg,#e9ecef 0%,#ced4da 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:120px;margin-bottom:24px;overflow:hidden">
+            🚛
+            <div style="position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,0.5);color:white;padding:6px 12px;border-radius:4px;font-size:12px">360° view · Galerías disponibles</div>
+          </div>
+
+          <!-- KEY SPECS GRID -->
+          <div class="grid-3" style="margin-bottom:32px;gap:12px">
+            <div style="background:var(--gray-100);padding:16px;border-radius:8px">
+              <div style="font-size:11px;text-transform:uppercase;color:var(--gray-600);letter-spacing:1px;margin-bottom:4px">Capacidad GVW</div>
+              <div style="font-size:20px;font-weight:700;color:var(--fuso)">14 Toneladas</div>
+            </div>
+            <div style="background:var(--gray-100);padding:16px;border-radius:8px">
+              <div style="font-size:11px;text-transform:uppercase;color:var(--gray-600);letter-spacing:1px;margin-bottom:4px">Largo chasis</div>
+              <div style="font-size:20px;font-weight:700;color:var(--fuso)">24 pies (7.3m)</div>
+            </div>
+            <div style="background:var(--gray-100);padding:16px;border-radius:8px">
+              <div style="font-size:11px;text-transform:uppercase;color:var(--gray-600);letter-spacing:1px;margin-bottom:4px">Motor</div>
+              <div style="font-size:20px;font-weight:700;color:var(--fuso)">Diesel 6.5L</div>
+            </div>
+          </div>
+
+          <!-- TABS: SPECS / CONFIG / FINANCE -->
+          <div style="border-bottom:2px solid var(--gray-200);margin-bottom:24px;display:flex;gap:0">
+            <div style="flex:1;padding:12px 0;border-bottom:3px solid var(--fuso);cursor:pointer;font-weight:600;font-size:13px">📋 Especificaciones</div>
+            <div style="flex:1;padding:12px 0;color:var(--gray-600);cursor:pointer;font-weight:600;font-size:13px">⚙️ Configurador</div>
+            <div style="flex:1;padding:12px 0;color:var(--gray-600);cursor:pointer;font-weight:600;font-size:13px">💰 Financiamiento</div>
+          </div>
+
+          <!-- SPECS TABLE -->
+          <table class="compare-table" style="margin-bottom:32px;font-size:12px">
+            <tr><td style="font-weight:600;width:40%">Motor</td><td>Diesel Cummins 6.5L, 240 HP, 580 Nm</td></tr>
+            <tr><td style="font-weight:600">Transmisión</td><td>Manual 6-velocidades (Automática opcional)</td></tr>
+            <tr><td style="font-weight:600">Tracción</td><td>4x2 (6x4 disponible)</td></tr>
+            <tr><td style="font-weight:600">GVW</td><td>14,000 kg | Peso seco: 6,500 kg</td></tr>
+            <tr><td style="font-weight:600">Capacidad carga</td><td>7,500 kg útil</td></tr>
+            <tr><td style="font-weight:600">Chasis largo</td><td>7.3 m | Ancho: 2.45 m | Alto: 2.9 m</td></tr>
+            <tr><td style="font-weight:600">Consumo combustible</td><td>~6.5 km/L (EPA mixto)</td></tr>
+            <tr><td style="font-weight:600">Euro norma</td><td>Euro IV (Euro V bajo pedido)</td></tr>
+            <tr><td style="font-weight:600">Garantía</td><td>3 años / 100,000 km</td></tr>
+            <tr><td style="font-weight:600">Precio base</td><td style="color:var(--fuso);font-weight:700">$78,000 USD</td></tr>
+          </table>
+
+          <div class="annotation" style="margin-bottom:32px">
+            <strong>Configuraciones disponibles:</strong>
+            <p style="margin-top:8px">Transmisión automática (+$2,800) · Euro V (+$4,200) · Equipo refrigerado (+$8,500) · Tracción 6x4 (+$6,700) · Cabina crew (3 pasajeros) (+$1,500)</p>
+          </div>
+
+          <!-- CALCULATOR PREVIEW -->
+          <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:20px;margin-bottom:32px">
+            <h3 style="font-weight:700;margin-bottom:16px;font-size:14px">💚 Simula tu financiamiento</h3>
+            <div class="grid-3" style="gap:12px;margin-bottom:16px;font-size:12px">
+              <div><label style="display:block;margin-bottom:4px;font-weight:600">Precio base</label><input type="text" class="wf-input" value="$78,000" readonly></div>
+              <div><label style="display:block;margin-bottom:4px;font-weight:600">Enganche %</label><input type="number" class="wf-input" value="20" placeholder="20"></div>
+              <div><label style="display:block;margin-bottom:4px;font-weight:600">Plazo (meses)</label><input type="number" class="wf-input" value="60" placeholder="60"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div style="background:white;padding:12px;border-radius:4px;text-align:center">
+                <div style="font-size:11px;color:var(--gray-600);margin-bottom:4px">Cuota mensual</div>
+                <div style="font-size:20px;font-weight:700;color:#16a34a">$1,248</div>
+              </div>
+              <div style="background:white;padding:12px;border-radius:4px;text-align:center">
+                <div style="font-size:11px;color:var(--gray-600);margin-bottom:4px">Tasa anual aprox.</div>
+                <div style="font-size:20px;font-weight:700;color:#16a34a">8.5%</div>
+              </div>
+            </div>
+            <div style="font-size:11px;color:var(--gray-600);margin-top:12px;text-align:center">Consulta tasas finales con nuestro equipo</div>
+          </div>
+
+          <!-- TEST DRIVE CTA -->
+          <div style="background:var(--fuso);color:white;padding:20px;border-radius:8px;display:flex;gap:16px;align-items:center;margin-bottom:32px">
+            <div style="flex:1">
+              <div style="font-weight:700;margin-bottom:4px">¿Quieres probar este modelo?</div>
+              <div style="font-size:13px;opacity:0.9">Agenda una prueba de manejo con nuestro equipo. 15 minutos bastan para sentir la diferencia.</div>
+            </div>
+            <span class="btn" style="background:white;color:var(--fuso);font-weight:700;padding:10px 20px;border-radius:6px;cursor:pointer;white-space:nowrap">Agendar test drive →</span>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div>
+          <div class="sidebar-card">
+            <h3>Precio base</h3>
+            <div style="font-size:24px;font-weight:800;color:var(--fuso);margin-bottom:16px">$78,000</div>
+            <div style="font-size:12px;color:var(--gray-600);margin-bottom:20px">Excluye opcionales. IVA incluido.</div>
+            <button class="btn btn-fuso" style="width:100%;text-align:center;font-weight:700">Cotizar ahora</button>
+            <div style="margin-top:12px;border-top:1px solid var(--gray-200);padding-top:12px">
+              <div style="font-size:12px;display:flex;gap:4px;margin-bottom:8px">
+                <span>📞</span>
+                <div><strong>Asesor asignado</strong><br><span style="color:var(--gray-600)">Te contactamos dentro de 2 horas</span></div>
+              </div>
+              <div style="font-size:12px;display:flex;gap:4px">
+                <span>📧</span>
+                <div><strong>Especificaciones</strong><br><span style="color:var(--gray-600)">Descarga PDF técnico</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card" style="margin-top:16px">
+            <h3>Comparar modelos</h3>
+            <div style="font-size:12px;color:var(--gray-600);margin-bottom:12px">Añade hasta 3 opciones</div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label style="display:flex;gap:6px;font-size:12px"><input type="checkbox"> FM 20 pies</label>
+              <label style="display:flex;gap:6px;font-size:12px"><input type="checkbox"> FE85</label>
+              <label style="display:flex;gap:6px;font-size:12px"><input type="checkbox"> FM 6x4</label>
+            </div>
+            <button class="btn btn-gray" style="width:100%;margin-top:12px;font-size:12px">Comparar →</button>
+          </div>
+
+          <div class="sidebar-card" style="margin-top:16px">
+            <h3>¿Es para flotas?</h3>
+            <div style="font-size:12px;color:var(--gray-600);margin-bottom:12px">Si necesitas 3 o más unidades, tenemos un proceso especial con precios corporativos.</div>
+            <button class="btn btn-outline" style="width:100%;color:var(--foton);border-color:var(--foton);font-size:12px">Solicitar RFP →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 6: FLUJOS DE USUARIO
+     ============================================================ -->
+<section class="section" id="flujo-retail">
+  <div class="badge badge-new">Flujos UX</div>
+  <h2 class="section-title" style="margin-top:8px">Flujo Retail — Explorar → Cotizar → Agendar</h2>
+  <p class="section-sub">Cliente individual buscando su primer o próximo camión comercial.</p>
+
+  <div style="margin-bottom:24px">
+    <div class="flow-wrap" style="margin-bottom:16px">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-title">Descubrimiento</div>
+        <div class="flow-desc">Ingresa a homepage, selecciona "Comprador Individual", filtros por uso + capacidad.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-title">Exploración</div>
+        <div class="flow-desc">Ve catálogo filtrado (4-8 modelos), abre ficha técnica, compara specs.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-title">Configuración</div>
+        <div class="flow-desc">Selecciona opcionales (color, transmisión, equipo), ve precio final.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-title">Financiamiento</div>
+        <div class="flow-desc">Simula cuota mensual con calculadora inline. Ve escenarios 36/48/60 meses.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div class="flow-title">Cotización</div>
+        <div class="flow-desc">CTA "Cotizar este modelo" → Formulario de 5 campos (nombre, email, tel, empresa, notas).</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">6</div>
+        <div class="flow-title">Asignación CRM</div>
+        <div class="flow-desc">Lead ingresa a HubSpot/Salesforce, se asigna automáticamente a asesor por zona + horario.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">7</div>
+        <div class="flow-title">Agendamiento</div>
+        <div class="flow-desc">Email automático con enlace a Calendly. Cliente elige slot de test drive o cita en sucursal.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">8</div>
+        <div class="flow-title">Cierre</div>
+        <div class="flow-desc">Asesor contacta, envía cotización formal, paperwork, entrega camión.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <strong>Notas UX retail:</strong>
+    <p>⏱️ Todo el flujo toma ~8-12 minutos para llegar a cotización. 💰 El calculador reduce fricción (client ve "son $1,200/mes, puedo hacerlo"). 📱 Mobile-first: botones grandes, formularios cortos. 🎯 Micro-conversiones: "Descargar PDF técnico" antes de "Cotizar" aumenta engagement.</p>
+  </div>
+</section>
+
+<section class="section" id="flujo-flotas">
+  <div class="badge badge-crm">Flotas</div>
+  <h2 class="section-title" style="margin-top:8px">Flujo Flotas — RFP → Evaluación → Propuesta</h2>
+  <p class="section-sub">Gestor de flota corporate solicitando presupuesto por 5-500 unidades.</p>
+
+  <div style="margin-bottom:24px">
+    <div class="flow-wrap">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-title">Identificación</div>
+        <div class="flow-desc">En search bar: "¿Cuántas unidades?" → ≥3 = activa segmento flotas.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-title">RFP Light</div>
+        <div class="flow-desc">CTA "Solicitar propuesta de flota" → Formulario expandido: empresa, sector, unidades, specs, presupuesto aproximado.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-title">Calificación</div>
+        <div class="flow-desc">Lead entra a CRM como "Account" + oportunidad. Clasificación automática: lead score por sector/volumen.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-title">Asignación</div>
+        <div class="flow-desc">Se asigna a especialista de flotas. Email con: "Tu gestor de cuenta es Juan Sánchez".</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div class="flow-title">Propuesta</div>
+        <div class="flow-desc">Gestor prepara RFP formal en PDF (specs, pricing, financiamiento, términos de entrega).</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">6</div>
+        <div class="flow-title">Negociación</div>
+        <div class="flow-desc">Llamadas, ajustes a propuesta, descuentos volumen, términos de pago especiales.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">7</div>
+        <div class="flow-title">Firma</div>
+        <div class="flow-desc">DocuSign o impresión. PO (Purchase Order) del cliente.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">8</div>
+        <div class="flow-title">Entrega</div>
+        <div class="flow-desc">Seguimiento de fabricación/importación, logística, entrega programada en sucursal o cliente.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <strong>Notas UX flotas:</strong>
+    <p>⏱️ Flujo más largo: 2-4 semanas de evaluación. 🏢 Involve: gestor, CFO, jefe de operaciones. 💼 Portal de flotas (opcional): cliente logueado ve estado de orden, tracking de fabricación, documentos. 📊 Descuentos automáticos: 5-9 unidades = 3%, 10-19 = 5%, 20+ = contactar para especial.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 7: COTIZADOR INTEGRADO
+     ============================================================ -->
+<section class="section" id="cotizador">
+  <div class="badge badge-new">Flujo Detalle</div>
+  <h2 class="section-title" style="margin-top:8px">Cotizador Online — Flujo completo</h2>
+  <p class="section-sub">Modal/página que integra producto + financiamiento + datos cliente sin salir del sitio.</p>
+
+  <div class="wf-wrap">
+    <div class="wf-label">
+      <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+      &nbsp; Modal "Cotizar" — 3 pasos &nbsp;|&nbsp; Desktop + Mobile
+    </div>
+    <div class="wf-content" style="padding:32px 40px;background:#f8f9fa">
+
+      <div style="max-width:600px;margin:0 auto">
+        <div class="wf-step-indicator">
+          <div class="wf-step done">✓ Seleccionar modelo</div>
+          <div class="wf-step active">👤 Datos contacto</div>
+          <div class="wf-step">✉️ Confirmación</div>
+        </div>
+
+        <div style="background:white;padding:24px;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.1)">
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:12px">Paso 2 de 3 — Cuéntanos de ti</h3>
+          <p style="font-size:13px;color:var(--gray-600);margin-bottom:20px">Recibirás una cotización personalizada en tu email dentro de 2 horas.</p>
+
+          <div class="wf-form-field">
+            <label>Nombre completo *</label>
+            <input type="text" class="wf-input" placeholder="Juan García">
+          </div>
+
+          <div class="wf-form-field">
+            <label>Email *</label>
+            <input type="email" class="wf-input" placeholder="juan@miempresa.com">
+          </div>
+
+          <div class="wf-form-field">
+            <label>Teléfono / WhatsApp *</label>
+            <input type="tel" class="wf-input" placeholder="+507 XXXX XXXX">
+          </div>
+
+          <div class="wf-form-field">
+            <label>Empresa (opcional)</label>
+            <input type="text" class="wf-input" placeholder="Mi Transportes S.A.">
+          </div>
+
+          <div class="wf-form-field">
+            <label>Sector / Uso del vehículo</label>
+            <select class="wf-input">
+              <option>Carga general</option><option>Construcción</option><option>Distribución</option><option>Refrigerado</option><option>Pasajeros</option><option>Otro</option>
+            </select>
+          </div>
+
+          <div class="wf-form-field">
+            <label>¿Es cliente retail o flota?</label>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button style="flex:1;padding:10px;border:1.5px solid var(--gray-400);background:white;border-radius:6px;cursor:pointer;font-weight:600;font-size:13px">👤 Comprador Individual</button>
+              <button style="flex:1;padding:10px;border:1.5px solid var(--gray-400);background:white;border-radius:6px;cursor:pointer;font-weight:600;font-size:13px">🏢 Gestor de Flota</button>
+            </div>
+          </div>
+
+          <div class="wf-form-field">
+            <label>
+              <input type="checkbox" style="margin-right:8px;cursor:pointer">
+              <span style="font-size:12px">Deseo recibir información sobre financiamiento, seguros y servicios de mantenimiento.</span>
+            </label>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:28px">
+            <button style="flex:1;padding:12px;background:#f5f5f5;border:1px solid var(--gray-300);border-radius:6px;font-weight:600;cursor:pointer">Atrás</button>
+            <button style="flex:1;padding:12px;background:var(--fuso);color:white;border:none;border-radius:6px;font-weight:600;cursor:pointer">Continuar →</button>
+          </div>
+
+          <div style="font-size:11px;color:var(--gray-600);margin-top:12px;text-align:center">Tu información está protegida. <a href="#" style="color:var(--fuso)">Ver política de privacidad</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="annotation" style="margin-top:24px">
+    <strong>Validación en tiempo real:</strong>
+    <p>✓ Email debe ser válido · ✓ Teléfono debe tener 7-12 dígitos · ✓ Campos obligatorios marcados. Si es flota (campo "¿Cuántas unidades?" en paso 1 ≥ 3), el flujo redirige a "RFP Light" en vez de cotizador estándar.</p>
+  </div>
+</section>
+
+
+<footer style="padding:40px;background:var(--excel);color:white;text-align:center;font-size:12px;border-top:1px solid var(--gray-200)">
+  <p><strong>Análisis de Mercado + Wireframes Web — Excel Automotriz</strong><br>
+  Fuso & Fotón Panamá. Análisis UX/UI y propuesta visual de homepage, categorías y modelos.<br>
+  Abril 2026. Confidencial.</p>
+</footer>
+
+</main>
+</body>
+</html>
