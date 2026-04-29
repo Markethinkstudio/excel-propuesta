@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis Competitivo — GWM, Dongfeng, Chery, Isuzu en Panamá</title>
+<style>
+:root {
+  --gwm: #1a1a2e;
+  --dongfeng: #AF0E0E;
+  --chery: #FF0000;
+  --isuzu: #003087;
+  --accent: #F5A623;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-400: #ced4da;
+  --gray-600: #6c757d;
+  --gray-800: #343a40;
+  --white: #ffffff;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--gray-800); background: #f0f2f5; }
+
+/* NAV DOC */
+.doc-nav {
+  position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+  background: var(--gwm); color: white; overflow-y: auto; z-index: 100;
+  padding: 20px 0;
+}
+.doc-nav h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); padding: 0 20px 12px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 12px; }
+.doc-nav a { display: block; padding: 8px 20px; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 3px solid transparent; }
+.doc-nav a:hover, .doc-nav a.active { color: white; background: rgba(255,255,255,0.08); border-left-color: var(--accent); }
+.doc-nav .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.35); padding: 16px 20px 4px; }
+
+.main { margin-left: 240px; }
+
+/* SECTIONS */
+.section { padding: 60px 48px; border-bottom: 1px solid var(--gray-200); background: white; }
+.section:nth-child(even) { background: var(--gray-100); }
+.section-title { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+.section-sub { color: var(--gray-600); font-size: 15px; margin-bottom: 36px; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-right: 6px; }
+.badge-gwm { background: #e8e8f0; color: var(--gwm); }
+.badge-dongfeng { background: #ffe8e8; color: var(--dongfeng); }
+.badge-chery { background: #ffe0e0; color: var(--chery); }
+.badge-isuzu { background: #e0e8f5; color: var(--isuzu); }
+
+/* COMPARISON */
+.compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.compare-table th { padding: 12px 16px; background: var(--gray-100); text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--gray-200); }
+.compare-table tr:hover td { background: var(--gray-100); }
+.check { color: #16a34a; font-weight: 700; }
+.cross { color: #dc2626; }
+.partial { color: #d97706; }
+
+/* CARDS */
+.card { background: white; border-radius: var(--radius); border: 1.5px solid var(--gray-200); overflow: hidden; margin-bottom: 16px; }
+.card-header { padding: 16px; border-bottom: 1.5px solid var(--gray-200); font-weight: 700; font-size: 14px; }
+.card-header.gwm { background: #fafbfc; border-left: 4px solid var(--gwm); }
+.card-header.dongfeng { background: #fff8f8; border-left: 4px solid var(--dongfeng); }
+.card-header.chery { background: #fff5f5; border-left: 4px solid var(--chery); }
+.card-header.isuzu { background: #f5f8ff; border-left: 4px solid var(--isuzu); }
+.card-body { padding: 16px; }
+
+/* GRID */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+/* ANNOTATION */
+.annotation { background: #fffbeb; border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; }
+.annotation strong { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #92400e; }
+.annotation p { font-size: 13px; color: #78350f; margin-top: 4px; }
+
+/* STAT STRIP */
+.stat-strip { background: var(--gwm); color: white; display: flex; justify-content: space-around; padding: 28px 40px; }
+.stat-item { text-align: center; }
+.stat-num { font-size: 28px; font-weight: 800; color: var(--accent); }
+.stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+/* TAGS */
+.tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.tag { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.tag-blue { background: #dbeafe; color: #1e40af; }
+.tag-green { background: #d1fae5; color: #065f46; }
+.tag-red { background: #fee2e2; color: #991b1b; }
+.tag-orange { background: #ffedd5; color: #9a3412; }
+.tag-yellow { background: #fef3c7; color: #92400e; }
+
+/* SPACERS */
+.mt-24 { margin-top: 24px; }
+.mb-16 { margin-bottom: 16px; }
+.gap-12 { gap: 12px; }
+hr.section { border: none; border-top: 2px dashed var(--gray-400); margin: 24px 0; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR NAV -->
+<nav class="doc-nav">
+  <h2>Análisis Competitivo</h2>
+  <span class="section-label">Visión General</span>
+  <a href="#benchmark">Benchmark Comparativo</a>
+  <a href="#resumen">Resumen Ejecutivo</a>
+  <span class="section-label">Análisis por Marca</span>
+  <a href="#gwm">GWM Panamá</a>
+  <a href="#dongfeng">Dongfeng Panamá</a>
+  <a href="#chery">Chery Panamá</a>
+  <a href="#isuzu">Isuzu Panamá</a>
+  <span class="section-label">Oportunidades</span>
+  <a href="#gaps">Gaps Identificados</a>
+  <a href="#recomendaciones">Recomendaciones</a>
+</nav>
+
+<main class="main">
+
+<!-- SECTION 1: BENCHMARK -->
+<section class="section" id="benchmark">
+  <div class="badge badge-gwm">Análisis</div>
+  <h2 class="section-title" style="margin-top:8px">Benchmark Comparativo — 4 Competidores en Panamá</h2>
+  <p class="section-sub">Evaluación de presencia digital, funcionalidades y UX/UI en distribuidoras automotrices.</p>
+
+  <table class="compare-table" style="margin-bottom:24px">
+    <thead>
+      <tr>
+        <th>Distribuidor / Marca</th>
+        <th>Tipo Principal</th>
+        <th>Navegación</th>
+        <th>Catálogo</th>
+        <th>Cotizador</th>
+        <th>Test Drive</th>
+        <th>Agendamiento</th>
+        <th>WhatsApp</th>
+        <th>Mobile</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>GWM Panamá</strong></td>
+        <td>SUV, Pickup, Híbrido</td>
+        <td class="check">✓ Jerárquica</td>
+        <td class="check">✓ 7+ modelos</td>
+        <td class="check">✓ Nativo</td>
+        <td class="check">✓ Sí</td>
+        <td class="partial">△ Formulario</td>
+        <td class="check">✓</td>
+        <td class="check">✓ Mobile-first</td>
+        <td><strong>8/10</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Dongfeng Panamá</strong></td>
+        <td>SUV, Pickup, Eléctrico</td>
+        <td class="check">✓ Clara</td>
+        <td class="check">✓ 5+ modelos</td>
+        <td class="check">✓ Disponible</td>
+        <td class="partial">△ Limitado</td>
+        <td class="cross">✗</td>
+        <td class="check">✓</td>
+        <td class="check">✓ Responsive</td>
+        <td><strong>6.5/10</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Chery Panamá</strong></td>
+        <td>SUV, Sedán</td>
+        <td class="check">✓ Intuitiva</td>
+        <td class="check">✓ 6 modelos</td>
+        <td class="check">✓ Disponible</td>
+        <td class="check">✓ Integrado</td>
+        <td class="partial">△ Por contacto</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td><strong>7.5/10</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Isuzu Panamá</strong></td>
+        <td>Pickup, Comercial, SUV</td>
+        <td class="check">✓ Completa</td>
+        <td class="check">✓ 8+ líneas</td>
+        <td class="partial">△ Externo</td>
+        <td class="check">✓ Integrado</td>
+        <td class="check">✓ Taller</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td><strong>7.5/10</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="annotation">
+    <strong>Hallazgo principal</strong>
+    <p><strong>GWM lidera en UX/UI moderna</strong> (8/10) con navegación jerárquica, cotizador nativo y mobile-first design. <strong>Dongfeng necesita agendamiento integrado</strong> (6.5/10). <strong>Chery e Isuzu están equilibradas</strong> (7.5/10 c/u) pero sin flujos de agendamiento completamente digitales. Oportunidad: <strong>integración CRM + automatización de leads</strong> es ausente en todos.</p>
+  </div>
+</section>
+
+<!-- SECTION 2: RESUMEN EJECUTIVO -->
+<section class="section" id="resumen">
+  <div class="badge badge-orange">Síntesis</div>
+  <h2 class="section-title" style="margin-top:8px">Resumen Ejecutivo — Competidores Clave</h2>
+  <p class="section-sub">Posicionamiento digital y madurez tecnológica de GWM, Dongfeng, Chery e Isuzu en el mercado panameño.</p>
+
+  <div class="stat-strip" style="margin-bottom:32px">
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Distribuidores Analizados</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7.6</div>
+      <div class="stat-label">Score Promedio (/ 10)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8/10</div>
+      <div class="stat-label">Líder: GWM</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6.5/10</div>
+      <div class="stat-label">Con más oportunidades</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:700;margin-bottom:16px">Competidores por Categoría de Vehículos</h3>
+  <div class="grid-2" style="margin-bottom:32px">
+    <div class="card">
+      <div class="card-header gwm">🚗 SUV / Sedán</div>
+      <div class="card-body">
+        <strong>GWM (Haval, Tank)</strong> - Premium, multi-segmento<br>
+        <strong>Chery (Tiggo, Arrizo)</strong> - Accesible, familia<br>
+        <strong>Isuzu (Mu-X)</strong> - Lujo, 7-pasajeros
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header dongfeng">🚚 Pickup / Comercial</div>
+      <div class="card-body">
+        <strong>Isuzu (D-MAX, P-Traviz)</strong> - Especialista, durabilidad<br>
+        <strong>Dongfeng (T5, Z9)</strong> - Valor, funcional<br>
+        <strong>GWM (Poer)</strong> - Híbrido
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:700;margin-bottom:16px">Propuesta de Valor vs Excel Automotriz</h3>
+  <div class="annotation">
+    <strong>Ventaja competitiva requerida</strong>
+    <p>GWM y Chery tienen <strong>presencia digital moderna</strong> con cotizadores integrados. Isuzu destaca en <strong>especialización comercial</strong>. Ninguno ofrece <strong>RFP automatizado para flotas</strong> ni <strong>agendamiento de citas completamente integrado con CRM</strong>. <strong>Excel Automotriz (Fuso + Fotón) podría diferenciarse con:</strong> segmentación retail/flotas nativa, agendamiento integrado con Google Calendar, cotizador con financiamiento calculado, y portal de flotas para follow-up automático.</p>
+  </div>
+</section>
+
+<!-- SECTION 3: GWM -->
+<section class="section" id="gwm">
+  <div class="badge badge-gwm">GWM Panamá</div>
+  <h2 class="section-title" style="margin-top:8px">Análisis Detallado — GWM Panamá</h2>
+  <p class="section-sub">Great Wall Motors. Distribuidor con presencia digital más moderna. Sitio: gwmpanama.com</p>
+
+  <div class="grid-2" style="margin-bottom:24px">
+    <div class="card">
+      <div class="card-header gwm">📊 Fortalezas</div>
+      <div class="card-body">
+        <ul style="margin-left:16px;line-height:1.6">
+          <li><strong>UX/UI moderna:</strong> Mobile-first, responsive, hero carousel dinámico</li>
+          <li><strong>Navegación jerárquica:</strong> Menú expandible por modelos (8 líneas)</li>
+          <li><strong>Cotizador nativo:</strong> Integrado directamente en sitio</li>
+          <li><strong>Test Drive:</strong> Formulario de agendamiento</li>
+          <li><strong>Integración multi-país:</strong> Detecta ubicación y adapta contenido</li>
+          <li><strong>Analytics avanzado:</strong> Google Analytics, Meta Pixel, Qualtrics</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header gwm">⚠️ Gaps</div>
+      <div class="card-body">
+        <ul style="margin-left:16px;line-height:1.6">
+          <li><strong>Sin agendamiento digital:</strong> Solo formulario, no integración con calendarios</li>
+          <li><strong>Precio dinámico no cargado:</strong> "Price from [loading]" placeholders</li>
+          <li><strong>Sin segmentación retail/flotas:</strong> Un único flujo de compra</li>
+          <li><strong>Sin calculadora de financiamiento:</strong> Cotizador no incluye cuotas mensuales</li>
+          <li><strong>No visible CRM:</strong> Leads no tienen tracking público</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <strong>Conclusión GWM</strong>
+    <p>Líder en diseño y UX. <strong>Score 8/10.</strong> Es el referente a superar en términos de navegación y responsividad. La oportunidad está en <strong>agendamiento digital avanzado, financiamiento integrado y segmentación de customer journey.</strong></p>
+  </div>
+</section>
+
+<!-- SECTION 4: DONGFENG -->
+<section class="section" id="dongfeng">
+  <div class="badge badge-dongfeng">Dongfeng Panamá</div>
+  <h2 class="section-title" style="margin-top:8px">Análisis Detallado — Dongfeng Panamá</h2>
+  <p class="section-sub">Construido con Elementor/WordPress. Sitio: dongfeng.com.pa</p>
+
+  <div class="grid-2" style="margin-bottom:24px">
+    <div class="card">
+      <div class="card-header dongfeng">📊 Fortalezas</div>
+      <div class="card-body">
+        <ul style="margin-left:16px;line-height:1.6">
+          <li><strong>Catálogo visual:</strong> Galerías de imágenes bien estructuradas</li>
+          <li><strong>Secciones alternadas:</strong> Fondos oscuro/claro para contraste</li>
+          <li><strong>WhatsApp integrado:</strong> Contacto directo</li>
+          <li><strong>CTA prominentes:</strong> Botones rojos (#AF0E0E) muy visibles</li>
+          <li><strong>Respuesta rápida:</strong> Teléfono y email en header</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header dongfeng">⚠️ Gaps Críticos</div>
+      <div class="card-body">
+        <ul style="margin-left:16px;line-height:1.6">
+          <li><strong>❌ Sin agendamiento digital:</strong> No hay sistema de citas online</li>
+          <li><strong>❌ Sin cotizador integrado:</strong> Solo opción "Cotizar" que redirige a contacto</li>
+          <li><strong>WordPress estándar:</strong> Menos optimizado que sitios personalizados</li>
+          <li><strong>Formularios manuales:</strong> No hay automatización de leads</li>
+          <li><strong>Sin test drive scheduler:</strong> No integración con disponibilidad</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <strong>Conclusión Dongfeng</strong>
+    <p><strong>Score 6.5/10.</strong> Funcional pero básico. Es el competidor con <strong>mayor oportunidad para diferenciación digital.</strong> Falta agendamiento automatizado y cotizador integrado. Un upgrade aquí llevaría su score a 8+.</p>
+  </div>
+</section>
+
+<!-- SECTION 5: CHERY -->
+<section class="section" id="chery">
+  <div class="badge badge-chery">Chery Panamá</div>
+  <h2 class="section-title" style="margin-top:8px">Análisis Detallado — Chery Panamá</h2>
+  <p class="section-sub">Bajo el paraguas de Grupo Q. Sitio: cherypanama.com</p>
+
+  <div class="grid-2" style="margin-bottom:24px">
+    <div class="card">
+      <div class="card-header chery">📊 Fortalezas</div>
+      <div class="card-body">
+        <ul style="margin-left:16px;line-height:1.6">
+          <li><strong>Test Drive integrado:</strong> Formulario de agendamiento visible</li>
+          <li><strong>Cotizador disponible:</strong> Acceso desde navegación principal</li>
+          <li><strong>WhatsApp prominente:</strong> Contacto directo (+507 6501-8650)</li>
+          <li><strong>Portal GrupoQ:</strong> "Mi GrupoQ" para clientes</li>
+          <li><strong>Multi-canal:</strong> Redes sociales, email, phone</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header chery">⚠️ Gaps</div>
+      <div class="card-body">
+        <ul style="margin-left:16px;line-height:1.6">
+          <li><strong>Agendamiento por contacto:</strong> No calendar picker integrado</li>
+          <li><strong>Sin segmentación de flujos:</strong> Todos los usuarios ven lo mismo</li>
+          <li><strong>Catálogo limitado a SUV:</strong> Véase inconsistencia con "vehículos comerciales"</li>
+          <li><strong>Cotizador no claro:</strong> Falta transparencia en proceso</li>
+          <li><strong>Portal GrupoQ poco integrado:</strong> Requiere login adicional</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <strong>Conclusión Chery</strong>
+    <p><strong>Score 7.5/10.</strong> Equilibrado entre presencia y funcionalidad. Ventaja: respalda de Grupo Q con múltiples sucursales. Desventaja: agendamiento requiere contacto manual, no hay integración calendario.</p>
+  </div>
+</section>
+
+<!-- SECTION 6: ISUZU -->
+<section class="section" id="isuzu">
+  <div class="badge badge-isuzu">Isuzu Panamá</div>
+  <h2 class="section-title" style="margin-top:8px">Análisis Detallado — Isuzu Panamá</h2>
+  <p class="section-sub">Especialista en pickups y vehículos comerciales. Sitio: isuzupanama.com.pa</p>
+
+  <div class="grid-2" style="margin-bottom:24px">
+    <div class="card">
+      <div class="card-header isuzu">📊 Fortalezas</div>
+      <div class="card-body">
+        <ul style="margin-left:16px;line-height:1.6">
+          <li><strong>Especialización clara:</strong> Comercial, pickup, trucks muy segmentados</li>
+          <li><strong>Post-venta integrado:</strong> Taller, service, repuestos visibles</li>
+          <li><strong>Agendamiento de taller:</strong> "Citas Taller" funcional</li>
+          <li><strong>Marca fuerte:</strong> "Truck DNA", 85+ años de historia</li>
+          <li><strong>Múltiples canales:</strong> Redes sociales, WhatsApp, email</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header isuzu">⚠️ Gaps</div>
+      <div class="card-body">
+        <ul style="margin-left:16px;line-height:1.6">
+          <li><strong>Cotizador externo:</strong> No integrado, redirecciona fuera del sitio</li>
+          <li><strong>Agendamiento de taller pero no de test drive:</strong> Asimetría en flujos</li>
+          <li><strong>Sin segmentación flotas:</strong> Mismo sitio para retail y B2B</li>
+          <li><strong>Sin calculadora de financiamiento:</strong> Precio sin contexto de cuota mensual</li>
+          <li><strong>News section poco actualizado:</strong> Parece desatendido</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <strong>Conclusión Isuzu</strong>
+    <p><strong>Score 7.5/10.</strong> Fuerte en especialización y post-venta. Debilidad: cotizador externo y falta de segmentación de flujos retail vs. flota. Si agregaran RFP automatizado para flotas, serían 8.5+.</p>
+  </div>
+</section>
+
+<!-- SECTION 7: GAPS -->
+<section class="section" id="gaps">
+  <div class="badge badge-gwm">Oportunidades</div>
+  <h2 class="section-title" style="margin-top:8px">Gaps Críticos Identificados — Mercado Panameño</h2>
+  <p class="section-sub">Análisis de vacíos funcionales presentes en todos o mayoría de competidores.</p>
+
+  <div style="margin-bottom:24px">
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:12px">❌ Gap #1: Agendamiento Digital Integrado (Afecta: 3/4 competidores)</h3>
+    <p style="margin-bottom:12px">GWM tiene formulario, pero sin calendar picker. Dongfeng y Chery requieren contacto manual. Isuzu solo ofrece agendamiento de taller, no test drive.</p>
+    <div class="tag-wrap">
+      <span class="tag tag-red">Alto impacto</span>
+      <span class="tag tag-orange">Conversion</span>
+      <span class="tag tag-yellow">Fricción en funnel</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom:24px">
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:12px">❌ Gap #2: Segmentación Retail vs. Flotas (Afecta: 4/4 competidores)</h3>
+    <p style="margin-bottom:12px">Ninguno diferencia el flujo de compra. Un gestor de flota viendo tarjetas de retail no es ideal. Sin RFP automatizado.</p>
+    <div class="tag-wrap">
+      <span class="tag tag-red">Alto impacto</span>
+      <span class="tag tag-orange">B2B</span>
+      <span class="tag tag-blue">Segmentación</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom:24px">
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:12px">❌ Gap #3: Cotizador sin Financiamiento (Afecta: 3/4 competidores)</h3>
+    <p style="margin-bottom:12px">GWM y Chery tienen cotizador pero no integran cálculo de cuota mensual. Cliente ve precio, no "es $800/mes". Fricciona en decisión.</p>
+    <div class="tag-wrap">
+      <span class="tag tag-red">Alto impacto</span>
+      <span class="tag tag-green">Conversión</span>
+      <span class="tag tag-orange">UX</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom:24px">
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:12px">❌ Gap #4: Cotizador/RFP Externo (Afecta: 2/4 competidores)</h3>
+    <p style="margin-bottom:12px">Dongfeng e Isuzu redirigen fuera del sitio. Experiencia fragmentada, sin tracking de leads en sitio principal.</p>
+    <div class="tag-wrap">
+      <span class="tag tag-red">Alto impacto</span>
+      <span class="tag tag-orange">Abandono</span>
+      <span class="tag tag-blue">Analytics</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom:24px">
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:12px">⚠️ Gap #5: Sin CRM Integrado Visible (Afecta: 4/4 competidores)</h3>
+    <p style="margin-bottom:12px">Ninguno muestra tracking de leads, asignación de asesor o seguimiento automático. Cliente no sabe dónde está su solicitud.</p>
+    <div class="tag-wrap">
+      <span class="tag tag-yellow">Medio impacto</span>
+      <span class="tag tag-purple">CRM</span>
+      <span class="tag tag-blue">Transparencia</span>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <strong>Síntesis de oportunidades</strong>
+    <p><strong>Excel Automotriz (Fuso + Fotón) tiene 4 puntos de diferenciación claros:</strong> (1) Agendamiento integrado con calendar picker, (2) Segmentación nativa retail/flotas con flujos diferenciados, (3) Cotizador con financiamiento calculado en tiempo real, (4) RFP automatizado para flotas con asignación de asesor visible. Si se implementan correctamente, Excel podría saltar de 4/10 (estado actual) a 8.5/10 en 6 meses.</p>
+  </div>
+</section>
+
+<!-- SECTION 8: RECOMENDACIONES -->
+<section class="section" id="recomendaciones">
+  <div class="badge badge-gwm">Estrategia</div>
+  <h2 class="section-title" style="margin-top:8px">Recomendaciones Estratégicas para Excel Automotriz</h2>
+  <p class="section-sub">Cómo diferenciarse y capturar market share vs. GWM, Dongfeng, Chery e Isuzu.</p>
+
+  <div style="margin-bottom:32px">
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:12px">1️⃣ Agendamiento Digital Integrado (Corto plazo: 4 semanas)</h3>
+    <div class="card">
+      <div class="card-body">
+        <p style="margin-bottom:12px"><strong>¿Por qué?</strong> GWM lo tiene (pero sin calendar picker). Dongfeng, Chery, Isuzu no lo tienen. Implementar correctamente = diferenciación inmediata.</p>
+        <p style="margin-bottom:12px"><strong>¿Cómo?</strong> Google Calendar API + Calendly para test drive, consulta técnica y entregas. WhatsApp reminder automático 24h antes. SMS para flotas.</p>
+        <div class="tag-wrap">
+          <span class="tag tag-green">Fácil</span>
+          <span class="tag tag-green">Alto ROI</span>
+          <span class="tag tag-green">Visible</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:32px">
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:12px">2️⃣ Segmentación Retail / Flotas en Homepage (Corto plazo: 6 semanas)</h3>
+    <div class="card">
+      <div class="card-body">
+        <p style="margin-bottom:12px"><strong>¿Por qué?</strong> Ningún competidor la hace. Un gestor de flota de 50 camiones necesita RFP, no un formulario de cotización individual. Cliente retail de 1 unidad necesita test drive rápido.</p>
+        <p style="margin-bottom:12px"><strong>¿Cómo?</strong> Search bar detecta "¿Cuántas unidades?" → <3 = Retail (test drive, cotizador, financiamiento). ≥3 = Flotas (RFP, evaluación multi-semana, asignación de gestor).</p>
+        <div class="tag-wrap">
+          <span class="tag tag-green">Diferenciador</span>
+          <span class="tag tag-orange">Medio</span>
+          <span class="tag tag-blue">Conversión</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:32px">
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:12px">3️⃣ Cotizador con Financiamiento Calculado (Corto-medio plazo: 8 semanas)</h3>
+    <div class="card">
+      <div class="card-body">
+        <p style="margin-bottom:12px"><strong>¿Por qué?</strong> GWM, Chery tienen cotizador pero sin cuota mensual. Cliente retail decide basado en "¿puedo pagar $1,200/mes?" no en "cuesta $45,000".</p>
+        <p style="margin-bottom:12px"><strong>¿Cómo?</strong> Cotizador integra: modelo → año → precio base → tasa financiamiento (12/24/36/48 meses) → calcula cuota mensual en tiempo real.</p>
+        <div class="tag-wrap">
+          <span class="tag tag-green">Conversión</span>
+          <span class="tag tag-green">Experiencia</span>
+          <span class="tag tag-orange">Medio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:32px">
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:12px">4️⃣ RFP Automatizado para Flotas (Mediano plazo: 12 semanas)</h3>
+    <div class="card">
+      <div class="card-body">
+        <p style="margin-bottom:12px"><strong>¿Por qué?</strong> Isuzu lo hace parcialmente (agendamiento taller). Excel podría ser el primero con RFP completo + portal de seguimiento para el cliente.</p>
+        <p style="margin-bottom:12px"><strong>¿Cómo?</strong> Formulario expandido: empresa, sector, cantidad, specs requeridas, presupuesto. Lead entra a CRM como "Cuenta" + Oportunidad. Asesor asignado automáticamente. Portal privado para cliente: ver RFP, negociar, firmar digitalmente.</p>
+        <div class="tag-wrap">
+          <span class="tag tag-green">B2B</span>
+          <span class="tag tag-orange">Complejo</span>
+          <span class="tag tag-blue">Diferenciador</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <strong>Timeline de implementación recomendado</strong>
+    <p><strong>Mes 1-2 (Corto plazo):</strong> #1 Agendamiento integrado + #2 Segmentación retail/flotas. <strong>Mes 2-3:</strong> #3 Cotizador con financiamiento. <strong>Mes 3-4:</strong> #4 RFP automatizado. Resultado: Excel pasa de 4/10 a 8.5/10, diferenciándose de todos los competidores analizados.</p>
+  </div>
+</section>
+
+<footer style="padding:40px;background:var(--gwm);color:white;text-align:center;font-size:12px;border-top:1px solid var(--gray-200)">
+  <p><strong>Análisis Competitivo — GWM, Dongfeng, Chery, Isuzu en Panamá</strong><br>
+  Evaluación de presencia digital, UX/UI y funcionalidades de 4 distribuidoras automotrices.<br>
+  Abril 2026. Confidencial.</p>
+</footer>
+
+</main>
+</body>
+</html>
